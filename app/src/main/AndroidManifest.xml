@@ -12,6 +12,15 @@
         android:theme="@style/Theme.PuppyWatch"
         tools:targetApi="31">
         <activity
+            android:name=".BehaviorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CalendarActivity"
+            android:exported="false" />
+        <activity
             android:name=".MyPageActivity"
             android:exported="false" />
         <activity
