@@ -35,16 +35,22 @@ class CalendarAdapter(private val dayList: ArrayList<String>, private val onItem
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int){
 
-        holder.day_Text.setText(dayList[holder.adapterPosition])
-        holder.act_icon.setOnClickListener{
-            val intent = Intent(holder.act_icon?.context,DetailActivity::class.java)
-            startActivity(holder.act_icon.context,intent,null)
-            Log.d("clickTest","item position: ${holder.adapterPosition}")
-        }
-
         var day = dayList[holder.bindingAdapterPosition]
         holder.day_Text.setText(day)
-        //Log.v("position","{$position}")
+
+        holder.day_Text.setText(dayList[holder.adapterPosition])
+        holder.act_icon.setOnClickListener{
+            if (day.equals("")){
+                Log.d("buttonTest", "item position: ${holder.adapterPosition}")
+
+            }
+            else {
+                val intent = Intent(holder.act_icon?.context, DetailActivity::class.java)
+                startActivity(holder.act_icon.context, intent, null)
+                Log.d("clickTest", "item position: ${holder.adapterPosition}")
+            }
+        }
+
 
         if (day.equals("")){
             holder.act_icon.setImageResource(0)

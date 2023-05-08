@@ -80,7 +80,7 @@ class CalendarActivity : ComponentActivity(),OnItemListener {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun dayInMonthArray(date: LocalDate): ArrayList<String>{
 
-        var numOfBlank:Int = 0
+        var numOfBlank = 0
 
         var dayList = ArrayList<String>()
 
