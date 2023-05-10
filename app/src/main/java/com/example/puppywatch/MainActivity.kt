@@ -1,5 +1,6 @@
 package com.example.puppywatch
 
+import android.app.PendingIntent.getActivity
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -33,39 +34,61 @@ class MainActivity : AppCompatActivity() {
 
         weekView()
 
+        binding.goCalendarBtn.setOnClickListener{
+            val intent = Intent(this, CalendarActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
 
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun weekView(){
 
-
         val cal = Calendar.getInstance()
-        cal.time = Date()
-        var df: DateFormat = SimpleDateFormat("dd")
-        var date = df.format(cal.time)
 
+        val nWeek: Int = cal.get(Calendar.DAY_OF_WEEK)
 
+        val day_list = ArrayList<String>()
+        for (i in 1..14) {
+            val calendar = cal.clone() as Calendar
+            var date_data = calendar.add(Calendar.DATE, i-7)
+            var df: DateFormat = SimpleDateFormat("dd")
+            var date = df.format(date_data)
+            day_list.add(date)
+        }
 
 
 
         /*
-        var currentTime = LocalDateTime.now();
-        var day = DateTimeFormatter.ofPattern("dd")
-        var date = currentTime.format(day)
-        val cal: Calendar = Calendar.getInstance()
+        int dislike = getResources().getIdentifier("negBestCommDisLike" + (i - (i - negIdCnt)), "id", getActivity().getPackageName());
 
-         */
-        val nWeek: Int = cal.get(Calendar.DAY_OF_WEEK)
-        when (nWeek) {
-            1 -> {binding.mainDay1.text = date; binding.mainDay2.text = cal.add(Calendar.DATE, 1).toString(); }
-            2 -> {binding.mainDay2.text = date}
-            3 -> {binding.mainDay3.text = date}
-            4 -> {binding.mainDay4.text = date}
-            5 -> {binding.mainDay5.text = date}
-            6 -> {binding.mainDay6.text = date}
-            else -> {binding.mainDay7.text = date}
+        for(int i = 0 ; i < emotionCommentsArraylist.size() ; i++)
+        int id = getResources().getIdentifier("negBestCommId" + i, "id", getActivity().getPackageName());
+
+        getResources().getIdentifier("negBestCommId" + i, "id", getActivity().getPackageName());
+
+        commDislike[i] = view.findViewById(dislike);
+
+        commDislike[i].setText(antipathyCount);
+
+        resources.getIdentifier("mainday"+i,"string",MainActivity.)
+
+
+        val type = "cat"
+        val resId = resources.getIdentifier("animal_$i","string",packageName)
+        val animalName = resources.getString(resId)
+
+        var tv_list =  ArrayList<String>();
+        for (i in 1..8){
+            val resId = resources.getIdentifier("mainDay$i","id",packageName)
+            tv_list.add()
         }
+
+        */
+
 
     }
 
