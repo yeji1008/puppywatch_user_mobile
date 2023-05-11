@@ -1,17 +1,32 @@
 package com.example.puppywatch
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
+import androidx.annotation.RequiresApi
 import com.example.puppywatch.databinding.ActivityMainBinding
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.YearMonth
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    lateinit var  selectedData: LocalDate
+    @RequiresApi(Build.VERSION_CODES.O)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        selectedData = LocalDate.now()
+        weekView()
 
         binding.mainGoMyPageIv.setOnClickListener {
             val intent = Intent(this, MyPageActivity::class.java)
@@ -24,5 +39,89 @@ class MainActivity : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }
+
+        binding.goCalendarBtn.setOnClickListener{
+            val intent = Intent(this, CalendarActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun weekView(){
+
+
+        val cal = Calendar.getInstance()
+        var df: DateFormat = SimpleDateFormat("dd")
+        var date = df.format(cal)
+
+        val nWeek: Int = cal.get(Calendar.DAY_OF_WEEK)
+
+        val day_list = ArrayList<String>()
+        for (i in 1..14) {
+            val calendar = cal.clone() as Calendar
+            var date_data = calendar.add(Calendar.DATE, i-7)
+            var df: DateFormat = SimpleDateFormat("dd")
+            var date = df.format(date_data)
+            day_list.add(date)
+        }
+
+        val dayList = dayInMonthArray(selectedData)
+        val dayOfToday= dayList.indexOf(date)
+
+        val id_list = ArrayList<TextView>()
+        id_list.add(binding.mainDay1)
+        id_list.add(binding.mainDay2)
+        id_list.add(binding.mainDay3)
+        id_list.add(binding.mainDay4)
+        id_list.add(binding.mainDay5)
+        id_list.add(binding.mainDay6)
+        id_list.add(binding.mainDay7)
+
+        if (nWeek == 1){
+            for (i in 0..7) {
+                id_list[nWeek+i-1].text = dayList[dayOfToday + i]
+            }
+        }
+        else if (nWeek == 7) {
+            for (i in 0..7) {
+                id_list[nWeek-i].text = dayList[dayOfToday-i]
+            }
+        }
+        else {
+
+            for(i in 0..nWeek){
+                id_list[i].text = dayList[dayOfToday-nWeek+i+1]
+            }
+            for(i in 0..8-nWeek){
+                id_list[nWeek+i].text = dayList[dayOfToday+i]
+            }
+        }
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun dayInMonthArray(date: LocalDate): ArrayList<String> {
+
+        var numOfBlank = 0
+
+        var dayList = ArrayList<String>()
+
+        var yearMonth = YearMonth.from(date)
+
+        var firstDay = selectedData.withDayOfMonth(1)
+
+        var lastDay = yearMonth.lengthOfMonth()
+
+        var dayOfWeek = firstDay.dayOfWeek.value
+
+        for (i in 1..41) {
+            if (i <= dayOfWeek || i > (lastDay + dayOfWeek)) {
+                dayList.add("")
+            } else {
+                dayList.add((i - dayOfWeek).toString())
+            }
+        }
+        return dayList
+
     }
 }
