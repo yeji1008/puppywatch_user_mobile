@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="JOIN"
+        android:text="회원가입"
         android:font="@font/roboto_bold"
         android:textColor="@color/black"
         android:textSize="16sp"
@@ -19,393 +19,409 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/join_id_text_ll"
+    <ScrollView
+        android:id="@+id/join_sv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:paddingStart="35dp"
-        android:orientation="horizontal"
+        android:layout_height="0dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/join_submit_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/join_tv">
 
-        <TextView
-            android:id="@+id/join_id_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_medium"
-            android:text="아이디"
-            android:textColor="@color/light_black"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/join_id_fail_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/roboto_medium"
-            android:text="사용할 수 없는 아이디입니다."
-            android:textColor="@color/red"
-            android:textSize="11sp" />
-
-    </LinearLayout>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/join_id_cv"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        app:cardBackgroundColor="@color/light_gray"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/join_id_text_ll">
-
         <LinearLayout
-            android:id="@+id/join_id_ll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:paddingStart="15dp"
-            android:paddingEnd="25dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/join_id_et"
+            <LinearLayout
+                android:id="@+id/join_id_text_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@android:color/transparent"
-                android:fontFamily="@font/roboto_regular"
-                android:hint="Input id (6~15자)"
-                android:inputType="textPassword"
-                android:textColorHint="@color/gray"
-                android:textSize="15sp"
-                tools:ignore="TouchTargetSizeCheck" />
+                android:layout_marginTop="28dp"
+                android:orientation="horizontal"
+                android:paddingStart="35dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/join_tv">
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/join_id_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="아이디"
+                    android:textColor="@color/light_black"
+                    android:textSize="15sp" />
 
-    </androidx.cardview.widget.CardView>
+                <TextView
+                    android:id="@+id/join_id_fail_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="사용할 수 없는 아이디입니다."
+                    android:textColor="@color/red"
+                    android:textSize="11sp" />
 
-    <LinearLayout
-        android:id="@+id/join_password_text_ll"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingStart="35dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/join_id_cv">
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/join_password_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_medium"
-            android:text="비밀번호"
-            android:textColor="@color/light_black"
-            android:textSize="15sp" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/join_id_cv"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="30dp"
+                app:cardBackgroundColor="@color/light_gray"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/join_id_text_ll">
 
-        <TextView
-            android:id="@+id/join_password_fail_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/roboto_medium"
-            android:text="20자 이내의 비밀번호를 입력해주세요"
-            android:textColor="@color/red"
-            android:textSize="11sp" />
+                <LinearLayout
+                    android:id="@+id/join_id_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="25dp">
 
-    </LinearLayout>
+                    <EditText
+                        android:id="@+id/join_id_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/roboto_regular"
+                        android:hint="아이디 입력 (6~15자)"
+                        android:textColorHint="@color/gray"
+                        android:textSize="15sp"
+                        tools:ignore="TouchTargetSizeCheck" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/join_password_cv"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        app:cardBackgroundColor="@color/light_gray"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/join_password_text_ll">
+                </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/join_password_ll"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:paddingStart="15dp"
-            android:paddingEnd="25dp">
+            </androidx.cardview.widget.CardView>
 
-            <EditText
-                android:id="@+id/join_password_et"
+            <LinearLayout
+                android:id="@+id/join_password_text_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@android:color/transparent"
-                android:fontFamily="@font/roboto_regular"
-                android:hint="Input password (문자, 숫자, 특수문자 포함 8~20자)"
-                android:inputType="textPassword"
-                android:textColorHint="@color/gray"
-                android:textSize="15sp"
-                tools:ignore="TouchTargetSizeCheck" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingStart="35dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/join_id_cv">
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/join_password_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="비밀번호"
+                    android:textColor="@color/light_black"
+                    android:textSize="15sp" />
 
-    </androidx.cardview.widget.CardView>
+                <TextView
+                    android:id="@+id/join_password_fail_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="20자 이내의 비밀번호를 입력해주세요"
+                    android:textColor="@color/red"
+                    android:textSize="11sp" />
 
-    <LinearLayout
-        android:id="@+id/join_password_check_text_ll"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingStart="35dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/join_password_cv">
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/join_password_check_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_medium"
-            android:text="비밀번호 확인"
-            android:textColor="@color/light_black"
-            android:textSize="15sp" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/join_password_cv"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="30dp"
+                app:cardBackgroundColor="@color/light_gray"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/join_password_text_ll">
 
-        <TextView
-            android:id="@+id/join_password_check_fail_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/roboto_medium"
-            android:text="비밀번호가 일치하지 않습니다"
-            android:textColor="@color/red"
-            android:textSize="11sp" />
+                <LinearLayout
+                    android:id="@+id/join_password_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="25dp">
 
-    </LinearLayout>
+                    <EditText
+                        android:id="@+id/join_password_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/roboto_regular"
+                        android:hint="비밀번호 입력 (문자, 숫자, 특수문자 포함 8~20자)"
+                        android:inputType="textPassword"
+                        android:textColorHint="@color/gray"
+                        android:textSize="15sp"
+                        tools:ignore="TouchTargetSizeCheck" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/join_password_check_cv"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        app:cardBackgroundColor="@color/light_gray"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/join_password_check_text_ll">
+                </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/join_password_check_ll"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:paddingStart="15dp"
-            android:paddingEnd="25dp">
+            </androidx.cardview.widget.CardView>
 
-            <EditText
-                android:id="@+id/join_password_check_et"
+            <LinearLayout
+                android:id="@+id/join_password_check_text_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@android:color/transparent"
-                android:fontFamily="@font/roboto_regular"
-                android:hint="비밀번호 재입력"
-                android:inputType="textPassword"
-                android:textColorHint="@color/gray"
-                android:textSize="15sp"
-                tools:ignore="TouchTargetSizeCheck" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingStart="35dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/join_password_cv">
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/join_password_check_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="비밀번호 확인"
+                    android:textColor="@color/light_black"
+                    android:textSize="15sp" />
 
-    </androidx.cardview.widget.CardView>
+                <TextView
+                    android:id="@+id/join_password_check_fail_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="비밀번호가 일치하지 않습니다"
+                    android:textColor="@color/red"
+                    android:textSize="11sp" />
 
-    <LinearLayout
-        android:id="@+id/join_puppy_name_text_ll"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingStart="35dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/join_password_check_cv">
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/join_puppy_name_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_medium"
-            android:text="반려견 이름"
-            android:textColor="@color/light_black"
-            android:textSize="15sp" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/join_password_check_cv"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="30dp"
+                app:cardBackgroundColor="@color/light_gray"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/join_password_check_text_ll">
 
-    </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/join_password_check_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="25dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/join_puppy_name_cv"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        app:cardBackgroundColor="@color/light_gray"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/join_puppy_name_text_ll">
+                    <EditText
+                        android:id="@+id/join_password_check_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/roboto_regular"
+                        android:hint="비밀번호 재입력"
+                        android:inputType="textPassword"
+                        android:textColorHint="@color/gray"
+                        android:textSize="15sp"
+                        tools:ignore="TouchTargetSizeCheck" />
 
-        <LinearLayout
-            android:id="@+id/join_puppy_name_ll"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:paddingStart="15dp"
-            android:paddingEnd="25dp">
+                </LinearLayout>
 
-            <EditText
-                android:id="@+id/join_puppy_name_et"
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:id="@+id/join_puppy_name_text_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@android:color/transparent"
-                android:fontFamily="@font/roboto_regular"
-                android:hint="반려견 이름을 입력해주세요"
-                android:inputType="textPassword"
-                android:textColorHint="@color/gray"
-                android:textSize="15sp"
-                tools:ignore="TouchTargetSizeCheck" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingStart="35dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/join_password_check_cv">
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/join_puppy_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="반려견 이름"
+                    android:textColor="@color/light_black"
+                    android:textSize="15sp" />
 
-    </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/join_user_name_text_ll"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingStart="35dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/join_puppy_name_cv">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/join_puppy_name_cv"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="30dp"
+                app:cardBackgroundColor="@color/light_gray"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/join_puppy_name_text_ll">
 
-        <TextView
-            android:id="@+id/join_user_name_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_medium"
-            android:text="견주 이름"
-            android:textColor="@color/light_black"
-            android:textSize="15sp" />
+                <LinearLayout
+                    android:id="@+id/join_puppy_name_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="25dp">
 
-    </LinearLayout>
+                    <EditText
+                        android:id="@+id/join_puppy_name_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/roboto_regular"
+                        android:hint="반려견 이름을 입력해주세요"
+                        android:textColorHint="@color/gray"
+                        android:textSize="15sp"
+                        tools:ignore="TouchTargetSizeCheck" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/join_user_name_cv"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        app:cardBackgroundColor="@color/light_gray"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/join_user_name_text_ll">
+                </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/join_user_name_ll"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:paddingStart="15dp"
-            android:paddingEnd="25dp">
+            </androidx.cardview.widget.CardView>
 
-            <EditText
-                android:id="@+id/join_user_name_et"
+            <LinearLayout
+                android:id="@+id/join_user_name_text_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@android:color/transparent"
-                android:fontFamily="@font/roboto_regular"
-                android:hint="견주 이름을 입력해주세요"
-                android:inputType="textPassword"
-                android:textColorHint="@color/gray"
-                android:textSize="15sp"
-                tools:ignore="TouchTargetSizeCheck" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingStart="35dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/join_puppy_name_cv">
+
+                <TextView
+                    android:id="@+id/join_user_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="견주 이름"
+                    android:textColor="@color/light_black"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/join_user_name_cv"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="30dp"
+                app:cardBackgroundColor="@color/light_gray"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/join_user_name_text_ll">
+
+                <LinearLayout
+                    android:id="@+id/join_user_name_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="25dp">
+
+                    <EditText
+                        android:id="@+id/join_user_name_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/roboto_regular"
+                        android:hint="견주 이름을 입력해주세요"
+                        android:textColorHint="@color/gray"
+                        android:textSize="15sp"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
+    </ScrollView>
 
     <android.widget.Button
         android:id="@+id/join_submit_btn"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_marginTop="30dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/sign_btn_background"
         android:fontFamily="@font/roboto_light"
-        android:text="Sign in"
+        android:text="회원가입"
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/join_go_login_ll"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/join_user_name_cv" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
         android:id="@+id/join_go_login_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginBottom="50dp"
         android:gravity="center"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/join_submit_btn">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/join_no_member_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:text="Already a member?"
-            android:textSize="14sp"
             android:fontFamily="@font/roboto_regular"
-            android:textColor="@color/light_black"/>
+            android:text="이미 회원이신가요?"
+            android:textColor="@color/light_black"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/join_go_login_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="2.5dp"
-            android:text="Sign in"
-            android:textSize="14sp"
             android:fontFamily="@font/roboto_regular"
-            android:textColor="@color/main_blue"/>
+            android:text="로그인"
+            android:textColor="@color/main_blue"
+            android:textSize="14sp" />
 
     </LinearLayout>
 

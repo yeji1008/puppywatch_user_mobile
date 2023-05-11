@@ -7,20 +7,20 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:id="@+id/login_id_ll"
+        android:id="@+id/main_title_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="horizontal"
-        android:layout_marginTop="15dp"
-        android:paddingStart="20dp"
+        android:layout_marginTop="20dp"
+        android:paddingStart="25dp"
         android:paddingEnd="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/main_puppy_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -30,12 +30,23 @@
             android:textSize="20sp" />
 
         <ImageView
-            android:id="@+id/login_id_iv"
+            android:id="@+id/main_go_my_page_iv"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="center"
             android:src="@drawable/ic_mypage" />
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/main_go_behavior_iv"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="238dp"
+        android:src="@drawable/ic_behavior"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_title_ll" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
