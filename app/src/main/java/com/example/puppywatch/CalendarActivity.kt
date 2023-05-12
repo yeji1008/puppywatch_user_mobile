@@ -31,8 +31,6 @@ class CalendarActivity : ComponentActivity(),OnItemListener {
 
         setMonthView()
 
-
-
         binding.preBtn.setOnClickListener {
             selectedData = selectedData.minusMonths(1)
             setMonthView()
@@ -41,8 +39,6 @@ class CalendarActivity : ComponentActivity(),OnItemListener {
             selectedData = selectedData.plusMonths(1)
             setMonthView()
         }
-
-
     }
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setMonthView(){
@@ -50,13 +46,10 @@ class CalendarActivity : ComponentActivity(),OnItemListener {
         binding.monthText.text = monthYearfromDate(selectedData)
 
         val dayList = dayInMonthArray(selectedData)
-
         val adapter = CalendarAdapter(dayList, this)
-
         var manager: RecyclerView.LayoutManager = GridLayoutManager(applicationContext,7)
 
         binding.recylerView.layoutManager = manager
-
         binding.recylerView.adapter = adapter
 
     }
@@ -77,15 +70,10 @@ class CalendarActivity : ComponentActivity(),OnItemListener {
     private fun dayInMonthArray(date: LocalDate): ArrayList<String>{
 
         var numOfBlank = 0
-
         var dayList = ArrayList<String>()
-
         var yearMonth = YearMonth.from(date)
-
         var firstDay = selectedData.withDayOfMonth(1)
-
         var lastDay = yearMonth.lengthOfMonth()
-
         var dayOfWeek = firstDay.dayOfWeek.value
 
         for(i in 1..41){
@@ -101,15 +89,13 @@ class CalendarActivity : ComponentActivity(),OnItemListener {
             }
         }
         return dayList
-
-
     }
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onItemClick(day_Text: String) {
         var yearMonthDay = yearMonthfromDate(selectedData)+" "+ day_Text + "일"
 
         Toast.makeText(this,yearMonthDay, Toast.LENGTH_SHORT).show()
     }
-
 
 }

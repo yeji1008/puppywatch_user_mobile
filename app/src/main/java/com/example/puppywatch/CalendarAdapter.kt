@@ -18,19 +18,14 @@ import androidx.recyclerview.widget.RecyclerView
 class CalendarAdapter(private val dayList: ArrayList<String>, private val onItemListener: OnItemListener):
         RecyclerView.Adapter<CalendarAdapter.ItemViewHolder>() {
 
-
-    class ItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-
+    class ItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val day_Text: TextView = itemView.findViewById(R.id.day_Text)
         var act_icon: ImageView = itemView.findViewById(R.id.act_icon)
-
-        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-
         val view = LayoutInflater.from(parent.context).inflate(R.layout.calendar_cell, parent, false)
         return ItemViewHolder(view)
-
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int){
@@ -65,11 +60,8 @@ class CalendarAdapter(private val dayList: ArrayList<String>, private val onItem
         }
 
     }
-
-
     override fun getItemCount(): Int {
         return dayList.size
     }
-
-        }
+}
 

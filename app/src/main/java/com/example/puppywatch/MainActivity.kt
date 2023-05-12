@@ -49,20 +49,20 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun weekView(){
 
-
         val cal = Calendar.getInstance()
-        var df: DateFormat = SimpleDateFormat("dd")
-        var date = df.format(cal)
+        val df: DateFormat = SimpleDateFormat("dd")
+        val currentDate = cal.time
+        val date = df.format(currentDate)
 
         val nWeek: Int = cal.get(Calendar.DAY_OF_WEEK)
-
         val day_list = ArrayList<String>()
-        for (i in 1..14) {
+
+        for (i in 0..14) {
             val calendar = cal.clone() as Calendar
-            var date_data = calendar.add(Calendar.DATE, i-7)
-            var df: DateFormat = SimpleDateFormat("dd")
-            var date = df.format(date_data)
-            day_list.add(date)
+            calendar.add(Calendar.DATE, i-7)
+            val date_data = calendar.time
+            val formattedDate = df.format(date_data)
+            day_list.add(formattedDate)
         }
 
         val dayList = dayInMonthArray(selectedData)
@@ -77,23 +77,20 @@ class MainActivity : AppCompatActivity() {
         id_list.add(binding.mainDay6)
         id_list.add(binding.mainDay7)
 
-        if (nWeek == 1){
-            for (i in 0..7) {
-                id_list[nWeek+i-1].text = dayList[dayOfToday + i]
+        if (nWeek == 1) {
+            for (i in 0..6) {
+                id_list[i].text = dayList[dayOfToday + i]
             }
-        }
-        else if (nWeek == 7) {
-            for (i in 0..7) {
-                id_list[nWeek-i].text = dayList[dayOfToday-i]
+        } else if (nWeek == 7) {
+            for (i in 0..6) {
+                id_list[6 - i].text = dayList[dayOfToday - i]
             }
-        }
-        else {
-
-            for(i in 0..nWeek){
-                id_list[i].text = dayList[dayOfToday-nWeek+i+1]
+        } else {
+            for (i in 0 until nWeek) {
+                id_list[i].text = dayList[dayOfToday - nWeek + i + 1]
             }
-            for(i in 0..8-nWeek){
-                id_list[nWeek+i].text = dayList[dayOfToday+i]
+            for (i in 0 until 7 - nWeek) {
+                id_list[nWeek + i].text = dayList[dayOfToday + i]
             }
         }
 
@@ -103,15 +100,10 @@ class MainActivity : AppCompatActivity() {
     private fun dayInMonthArray(date: LocalDate): ArrayList<String> {
 
         var numOfBlank = 0
-
         var dayList = ArrayList<String>()
-
         var yearMonth = YearMonth.from(date)
-
-        var firstDay = selectedData.withDayOfMonth(1)
-
+        var firstDay = date.withDayOfMonth(1)
         var lastDay = yearMonth.lengthOfMonth()
-
         var dayOfWeek = firstDay.dayOfWeek.value
 
         for (i in 1..41) {
@@ -122,6 +114,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return dayList
-
     }
 }
