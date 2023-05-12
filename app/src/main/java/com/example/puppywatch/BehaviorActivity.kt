@@ -1,5 +1,6 @@
 package com.example.puppywatch
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,18 @@ class BehaviorActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityBehaviorBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.behaviorGoMainIv.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+        }
+
+        binding.behaviorGoMainTv.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+        }
 
         // 레이아웃 매니저와 어댑터 설정
         binding.behaviorRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)

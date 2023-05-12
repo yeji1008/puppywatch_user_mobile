@@ -69,13 +69,13 @@ class MainActivity : AppCompatActivity() {
         val dayOfToday= dayList.indexOf(date)
 
         val id_list = ArrayList<TextView>()
-        id_list.add(binding.mainDay1)
-        id_list.add(binding.mainDay2)
-        id_list.add(binding.mainDay3)
-        id_list.add(binding.mainDay4)
-        id_list.add(binding.mainDay5)
-        id_list.add(binding.mainDay6)
-        id_list.add(binding.mainDay7)
+        id_list.add(binding.mainDate1)
+        id_list.add(binding.mainDate2)
+        id_list.add(binding.mainDate3)
+        id_list.add(binding.mainDate4)
+        id_list.add(binding.mainDate5)
+        id_list.add(binding.mainDate6)
+        id_list.add(binding.mainDate7)
 
         if (nWeek == 1) {
             for (i in 0..6) {
@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
                 id_list[i].text = dayList[dayOfToday - nWeek + i + 1]
             }
             for (i in 0 until 7 - nWeek) {
-                id_list[nWeek + i].text = dayList[dayOfToday + i]
+                id_list[nWeek + i].text = dayList[dayOfToday + i + 1]
             }
         }
 
